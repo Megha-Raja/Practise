@@ -1,0 +1,8 @@
+You are given two integer numbers, the base a and the index b. You have to find the last digit of ab.
+
+Class solution:
+  def getLastDigit(self,a,b):
+    return pow(int(a),int(b),10)
+
+
+#normally n%10 to get last digit 
