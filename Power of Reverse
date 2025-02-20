@@ -1,0 +1,11 @@
+Given a number n, find the value of n raised to the power of its own reverse.
+
+def reverse_exponentiation(self,n):
+  n=int(n)
+  x=int(n)
+  rev=0
+  while x>0:
+    r=x%10
+    rev=rev*10+r
+    x=x//10
+ return pow(n,rev)
