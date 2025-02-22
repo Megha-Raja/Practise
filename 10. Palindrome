@@ -1,0 +1,9 @@
+You are given an integer n. Your task is to determine whether it is a palindrome.
+A number is considered a palindrome if it reads the same backward as forward, like the string examples "MADAM" or "MOM".
+
+def palindrome(self,n):
+  st=str(n)
+  b=st[::-1]
+  if int(b)==n:
+    return True
+  return False
