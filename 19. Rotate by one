@@ -1,0 +1,4 @@
+Given an array arr, rotate the array by one position in clockwise direction.
+
+def rotby1(self,arr):
+  arr.insert(0,arr.pop())
