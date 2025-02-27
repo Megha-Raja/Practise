@@ -1,0 +1,19 @@
+Given an array 'arr' with 'n' elements, the task is to rotate the array to the left by 'k' steps, where 'k' is non-negative.
+
+def rotbyk(self,arr):
+  n=len(arr)
+  k=k%n
+  temp=[]
+  for i in range(k):
+    temp.append(arr[i])
+  for j in range(k,n):
+    arr[j-k]=arr[j]
+  for i in range len(temp):
+    arr[n-k+i]=temp[i]
+
+
+EASIER WAY
+
+def rotbyk(self,arr):
+  return arr[k:]+arr[:k]
+    
