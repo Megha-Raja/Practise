@@ -1,0 +1,11 @@
+Given two arrays a[] and b[], your task is to determine whether b[] is a subset of a[].
+
+from collections import Counter
+class Solution:
+  def isSubset(self,a,b):
+    x=Counter(a)
+    y=Counter(b)
+    for i in y:
+      if y[i]>x[i]:
+        return False
+    return True
