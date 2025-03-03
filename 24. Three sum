@@ -1,0 +1,19 @@
+Given an array arr[] and an integer target, determine if there exists a triplet in the array whose sum equals the given target.
+Return true if such a triplet exists, otherwise, return false.Triplet sum problem.
+
+def tripletSum(self,arr,target):
+  arr.sort()
+  n=len(arr)
+  for i in range(n-1):
+  left=i+1
+  right=n-1
+  while left<right:
+    cursum=arr[i]+arr[left]+arr[right]
+    if cursum==target:
+      return True
+    elif cursum>target:
+      right-=1
+    elif cursum<target:
+      left+=1
+  return False
+  
