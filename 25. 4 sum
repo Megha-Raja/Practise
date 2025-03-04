@@ -1,0 +1,24 @@
+Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+0 <= a, b, c, d < n
+a, b, c, and d are distinct.
+nums[a] + nums[b] + nums[c] + nums[d] == target
+You may return the answer in any order.
+
+
+def fourSum(self,arr,target):
+  arr.sort()
+  n=len(arr)
+  res=[]
+  for i in range(n-3):
+    for j in range(i+1,n-2):
+      left=j+1
+      right=n-1
+      while left<right:
+        currsum=arr[i]+arr[j]+arr[left]+arr[right]
+        if currsum==target:
+          return res.append(arr[i],arr[j],arr[left],arr[right])
+        elif currsum>target:
+          right-=1
+        elif currsum>target:
+          left+=1
+  return res
