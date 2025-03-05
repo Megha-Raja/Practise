@@ -1,0 +1,19 @@
+Given an array arr. The task is to count all the triplets such that the sum of two elements equals the third element.
+
+def trip(self,arr):
+  arr.sort()
+  n=len(arr)
+  count=0
+  for i in range(n-1,0,-1):
+    left=0
+    right=i-1
+    while left<right:
+      if arr[left]+arr[right]==arr[i]:
+        count+=1
+        left+=1
+        right-=1
+      elif arr[left]+arr[right]<arr[i]:
+        left+=1
+      elif arr[left]+arr[right]>arr[i]:
+        right-=1
+  return count
