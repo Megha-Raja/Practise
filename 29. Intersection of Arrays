@@ -1,0 +1,12 @@
+Given two unsorted integer arrays a[] and b[] each consisting of distinct elements, the task is to return the count of elements in the intersection (or common elements) of the two arrays.
+Intersection of two arrays can be defined as the set containing distinct common elements between the two arrays. 
+
+def intersection(self,a,b):
+  a.sort()
+  b.sort()
+  count=0
+  for i in range(len(a)):
+    for j in range(len(b)):
+      if a[i]==b[j]:
+        count+=1
+  return count
