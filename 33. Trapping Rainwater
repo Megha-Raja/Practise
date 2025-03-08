@@ -1,0 +1,21 @@
+Given an array arr[] with non-negative integers representing the height of blocks. 
+If the width of each block is 1, compute how much water can be trapped between the blocks during the rainy season. 
+
+def maxWater(self,arr):
+  left=0
+  right= len(arr)-1
+  left_max=0
+  right_max=0
+  res=0
+  while arr[left]<=arr[right]:
+    if arr[left]>=left_max:
+      left_max=arr[left]
+    else:
+      res+=left_max-arr[left]
+  else:
+    if arr[right]>=right_max:
+      right_max=arr[right]
+    else:
+      res+=right_max-arr[right]
+  return res
+    
