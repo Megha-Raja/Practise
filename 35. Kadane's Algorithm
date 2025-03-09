@@ -1,0 +1,12 @@
+Given an integer array arr[]. You need to find the maximum sum of a subarray.
+
+def maxSumSubarray(self,arr):
+  sum=0
+  max=arr[0]
+  for i in range(len(arr)):
+    sum+=arr[i]
+    if sum>max:
+      max=sum
+    if sum<0:
+      sum=0
+  return max
