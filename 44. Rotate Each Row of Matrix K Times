@@ -1,0 +1,19 @@
+You are given an integer k and matrix mat. Rotate the elements of the given matrix to the left k times and return the resulting matrix.
+
+def rotatematrix(self,mat):
+  n=len(mat)
+  m=len(mat[0])
+  k%=m
+  for row in mat:
+    self.rotate(row,m,k)
+  return mat
+def rotate(self,arr,m,k):
+  k=m-k
+  self.reverse(arr,0,m-1)
+  self.reverse(arr,0,k-1)
+  self.reverse(arr,k,m-1)
+def reverse(self,arr,left,right):
+  while left<right:
+    arr[left],arr[right]=arr[right],arr[left]
+    left+=1
+    right-=1
