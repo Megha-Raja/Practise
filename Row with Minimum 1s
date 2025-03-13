@@ -1,0 +1,11 @@
+Given a 2D binary matrix(1-based indexed) mat of dimensions nxm , determine the row that contains the minimum number of 1's.
+Note: The matrix contains only 1's and 0's. Also, if two or more rows contain the minimum number of 1's, the answer is the lowest of those indices.
+
+def minrow(self,a):
+  ind=0
+  min_ones = sum(arr[0])
+  for i in range(len(a)):
+    min_cnt=sum(a[i])
+    if min_cnt < min_ones:
+      ind,min_ones=i,min_cnt
+  return ind+1
