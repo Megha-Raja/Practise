@@ -1,0 +1,7 @@
+Print numbers from 1 to n without the help of loops. You only need to complete the function printNos() that takes n as a parameter and prints the number from 1 to n recursively.
+Note: Don't print any newline, it will be added by the driver code.
+
+def printNo(self,n):
+  if n>0:
+    self.printNo(n-1)
+    print(n,end=" ")
