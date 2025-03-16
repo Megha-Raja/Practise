@@ -1,0 +1,10 @@
+Given two numbers b and e, the task is to implement a function to compute b^e.
+
+def power(b,e):
+  if e==0:
+    return 1
+  if e<0:
+    return 1/power(b,-e)
+  else:
+    return b*power(b,e-1)
+    
