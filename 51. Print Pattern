@@ -1,0 +1,17 @@
+Print a sequence of numbers starting with n, without using a loop. Replace n with n - 5, n−5... until n≤0. Then, replace n with n+5, n + 5, n+5 until n regains its initial value. 
+Complete the function pattern(n) which takes n as input and returns a list containing the pattern.
+
+def pattern(self,n):
+  num=n
+  ans=[]
+  ans.append(n)
+  while n>0:
+    n-=5
+    ans.append(n)
+  if n!=num:
+    n+=5
+    ans.append(n)
+  return ans
+    
+    
+    
