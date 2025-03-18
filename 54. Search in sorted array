@@ -1,0 +1,15 @@
+Given an array, arr[] sorted in ascending order and an integer k. Return true if k is present in the array, otherwise, false.
+
+def search(self,arr,x):
+  n=len(arr)
+  left=0
+  right=n-1
+  while left<right:
+    mid=(left+right)//2
+    if arr[mid]==x:
+      return True
+    if arr[mid]>x:
+      right-=1
+    else:
+      left+=1
+    
