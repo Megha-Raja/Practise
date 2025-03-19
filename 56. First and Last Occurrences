@@ -1,0 +1,13 @@
+Given a sorted array arr with possibly some duplicates, the task is to find the first and last occurrences of an element x in the given array.
+Note: If the number x is not found in the array then return both the indices as -1.
+
+def firlasocc(self,arr,x):
+  n  =  len(arr)
+  k = []
+  for i in range(n)
+    if arr[i] == x:
+      k.append(i)
+  if k:
+    return (k[0],k[-1])
+  else:
+    return [-1,-1]
