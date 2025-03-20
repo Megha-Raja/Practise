@@ -1,0 +1,15 @@
+Given a positive integer n, find the square root of n. If n is not a perfect square, then return the floor value.
+Floor value of any number is the greatest Integer which is less than or equal to that number
+
+def flrsqrt(self,n):
+  lo=1
+  hi=n
+  res=1
+  while lo<=hi:
+    mid=(lo+hi)//2
+    if mid*mid<=n:
+      res=mid
+      lo=mid+1
+    else:
+      hi=mid-1
+  return res
