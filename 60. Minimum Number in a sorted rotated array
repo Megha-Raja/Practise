@@ -1,0 +1,15 @@
+Given an array of distinct elements which was initially sorted. This array may be rotated at some unknown point. 
+The task is to find the minimum element in the given sorted and rotated array. 
+
+def minsorted(self,arr,high,low):
+  low=0
+  high=len(arr)-1
+  while low<=high:
+    if arr[low]<arr[high]:
+      return arr[low]
+    mid=(low+high)//2
+    if arr[mid]>arr[high]:
+      low=mid+1
+    else:
+      high=mid
+  return arr[low]
