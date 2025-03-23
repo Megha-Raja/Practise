@@ -1,0 +1,16 @@
+Given a bitonic sequence A of N distinct elements, write a program to find a given element B in the bitonic sequence in O(logN) time.
+NOTE:A Bitonic Sequence is a sequence of numbers which is first strictly increasing then after a point strictly decreasing.
+
+def biot(self,arr,a,b):
+  if not a:
+    return -1
+  return self.bs(a,b,0,len(a)-1)
+def bs(self,a,b,lo,hi):
+  if lo>hi:
+    return -1
+  mid=(lo+hi)//2
+  if a[mid]==b:
+    return mid
+  leftval = self.bs(a,b,lo,mid-1)
+  rightval= self.bs(a,b,mid+1,hi)
+  return max(leftval,rightval)
