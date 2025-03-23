@@ -1,0 +1,12 @@
+Given a binary matrix (containing only 0 and 1) of order NxN. All rows are sorted already, We need to find the row number with the maximum number of 1s. 
+Also, find the number of 1s in that row.
+
+def max1(self,mat,n):
+  maxcnt=0
+  ind=0
+  for i in range(n):
+    cnt=mat[i].count(1)
+    if cnt>maxcnt:
+      maxcnt=cnt
+      ind=i
+  return [ind,maxcnt]
