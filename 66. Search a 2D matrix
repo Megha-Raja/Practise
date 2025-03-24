@@ -1,0 +1,17 @@
+Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. This matrix has the following properties:
+Integers in each row are sorted in ascending from left to right.
+Integers in each column are sorted in ascending from top to bottom.
+
+def search(self,mat,target):
+  row=len(mat)
+  col=len(mat[0])
+  i=row-1
+  j=0
+  while i>=0 and j<col:
+    if mat[i][j]==target:
+      return True
+    elif mat[i][j]<target:
+      j+=1
+    else:
+      i-=1
+  return False
