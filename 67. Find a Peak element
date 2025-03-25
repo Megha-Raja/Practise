@@ -1,0 +1,30 @@
+A peak element in a 2D grid is an element that is strictly greater than all of its adjacent neighbors to the left, right, top, and bottom.
+Given a 0-indexed m x n matrix mat where no two adjacent cells are equal, find any peak element mat[i][j] and return the length 2 array [i,j].
+
+class Solution:
+    def f(self,arr,mid):
+        maxi=-1
+        ind=-1
+        for i in range(len(arr)):
+            if maxi<arr[i][mid]:
+                maxi=arr[i][mid]
+                ind = i
+        return ind
+
+    def findPeakGrid(self, mat: List[List[int]]) -> List[int]:
+        low=0
+        high=len(mat[0])-1
+        while low<=high:
+            mid=(low+high)//2
+            row=self.f(mat,mid)
+            left=mat[row][mid-1] if mid-1>0 else -1
+            right=mat[row][mid+1] if mid+1<len(mat[0]) else -1
+            if left<mat[row][mid] and mat[row][mid]>right:
+                return [row,mid]
+            elif mat[row][mid]<left:
+                high=mid-1
+            else:
+                low=mid+1
+        return [-1][-1]
+
+        
