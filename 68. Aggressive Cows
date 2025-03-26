@@ -1,0 +1,21 @@
+You are given an array with unique elements of stalls[], which denote the position of a stall. You are also given an integer k which denotes the number of aggressive cows. 
+Your task is to assign stalls to k cows such that the minimum distance between any two of them is the maximum possible.
+
+def cows(self,stalls,k):
+  stalls.sort()
+  start=1
+  end=stalls[-1]-stalls[0]
+  while start<=end:
+    mid=(start+end)//2
+    cowcnt=1
+    prev_pos=stalls[0]
+    for i in range(1,len(arr)):
+      if stalls[i]-prev_pos>=mid:
+        cowcnt+=1
+        prev_pos=arr[i]
+      if cowcnt>=k:
+        ans=mid
+        start=mid+1
+      else:
+        end=mid-1
+  return ans
