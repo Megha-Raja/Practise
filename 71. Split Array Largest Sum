@@ -1,0 +1,27 @@
+Given an array arr[] of N elements and a number K., split the given array into K subarrays such that the maximum subarray sum achievable out of K subarrays formed is minimum possible. 
+Find that possible subarray sum.
+
+def check(self,arr,maxsum):
+  n=len(arr)
+  count=1
+  total=0
+  for num in arr:
+    if total+num>maxsum:
+      count+=1
+      total=num
+    else:
+      total+=num
+  return count
+
+def splitarr(self,arr,N,K):
+  if K>N:
+    return -1
+  lo=max(arr)
+  hi=sum(arr)
+  while lo<=hi:
+    mid=(lo+hi)//2
+    if self.check(arr,mid)>k:
+      lo=mid+1
+    else:
+      hi=mid-1
+  return lo
