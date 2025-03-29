@@ -8,7 +8,7 @@ def check(self,arr,maxsum):
   for num in arr:
     if total+num>maxsum:
       count+=1
-      total=num
+      total=num 
     else:
       total+=num
   return count
