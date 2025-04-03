@@ -1,0 +1,15 @@
+The distance of a pair of integers a and b is defined as the absolute difference between a and b.
+Given an integer array nums and an integer k, return the kth smallest distance among all the pairs nums[i] and nums[j] where 0 <= i < j < nums.length.
+
+def kthsmall(self,nums,k):
+  list1=[]
+  n=len(nums)
+  for i in range(n-1):
+    for j in range(i+1,n-1):
+      list1.append(abs(nums[i]-nums[j])
+  list1=sorted(list)
+  length=len(list1)
+  if k>length:
+    return list1[-1]
+  return list1[k-1]
+  
