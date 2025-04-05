@@ -1,0 +1,11 @@
+Given two sorted arrays a[] and b[], find and return the median of the combined array after merging them into a single sorted array.
+
+def medof2(self,a,b):
+  a.extend(b)
+  a.sort()
+  mid=len(a)//2
+  if len(a)%2==0:
+    res=(a[mid-1]+a[mid])/2
+  else:
+    res=a[mid]
+  retuen res
