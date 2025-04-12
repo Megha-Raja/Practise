@@ -1,0 +1,12 @@
+Given the head of a linked list, the task is to reverse this list and return the reversed head.
+
+class Solution:
+    def reverseList(self, head):
+        curr=head
+        prev=None
+        while curr!=None:
+            nextNode=curr.next
+            curr.next=prev
+            prev=curr
+            curr=nextNode
+        return prev
