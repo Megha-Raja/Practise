@@ -1,0 +1,23 @@
+Given the head of a Singly Linked List and a value x. The task is to insert the key in the middle of the linked list.
+
+class Solution:
+    def insertInMiddle(self, head, x):
+        if head is None:
+            return Node(x)
+
+        new_node = Node(x)
+        curr_node = head
+        length = 0
+        while curr_node is not None:
+            length += 1
+            curr_node = curr_node.next
+
+        mid = length // 2 if length % 2 == 0 else (length + 1) // 2
+        curr_node = head
+        while mid > 1:
+            curr_node = curr_node.next
+            mid -= 1
+        new_node.next = curr_node.next
+        curr_node.next = new_node
+
+        return head
