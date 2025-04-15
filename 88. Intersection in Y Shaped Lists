@@ -1,0 +1,12 @@
+Given the head of two singly linked lists, return the point where these two linked lists intersect.
+
+class Solution:
+    def intersectPoint(self,head1, head2):
+        ptr1 = head1
+        ptr2 = head2
+        if not ptr1 or not ptr2:
+            return None
+        while ptr1 != ptr2:
+            ptr1 = ptr1.next if ptr1 else head2
+            ptr2 = ptr2.next if ptr2 else head1
+        return ptr1 or ptr2
