@@ -1,0 +1,30 @@
+Given a linked list where nodes can contain values 0s, 1s, and 2s only. The task is to segregate 0s, 1s, and 2s
+linked list such that all zeros segregate to the head side, 2s at the end of the linked list, and 1s in the middle of 0s and 2s.
+
+def segregate(self, head):
+        if not head or not head.next:
+            return head
+        cnt0 = cnt1 = cnt2 = 0
+        cur = head
+        while cur:
+            if cur.data == 0:
+                cnt0 += 1
+            elif cur.data == 1:
+                cnt1 += 1
+            else:
+                cnt2 += 1
+            cur = cur.next
+        cur = head
+        while cur:
+            if cnt0 > 0:
+                cur.data = 0
+                cnt0 -= 1
+            elif cnt1 > 0:
+                cur.data = 1
+                cnt1 -= 1
+            else:
+                cur.data = 2
+                cnt2 -= 1
+            cur = cur.next
+
+        return head
