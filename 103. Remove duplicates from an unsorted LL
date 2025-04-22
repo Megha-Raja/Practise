@@ -1,0 +1,17 @@
+Given an unsorted linked list. The task is to remove duplicate elements from this unsorted Linked List. When a value appears in multiple nodes, 
+the node which appeared first should be kept, all other duplicates are to be removed.
+
+class Solution:
+    #Function to remove duplicates from unsorted linked list.
+    def removeDuplicates(self, head):
+        temp=head
+        curr=None
+        s=set()
+        while (temp is not None):
+            if temp.data in s:
+                curr.next=temp.next
+            else:
+                s.add(temp.data)
+                curr=temp
+            temp=temp.next
+        return head
