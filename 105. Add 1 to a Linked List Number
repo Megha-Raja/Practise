@@ -1,0 +1,24 @@
+You are given a linked list where each element in the list is a node and have an integer data. You need to add 1 to the number formed by concatinating all the list node numbers together and return the head of the modified linked list. 
+
+class Solution:
+    def reverse(self,head):
+        prev=None
+        cur=head
+        while cur:
+            next1=cur.next
+            cur.next=prev
+            prev=cur
+            cur=next1
+        return prev
+    def addOne(self,head):
+        rev=self.reverse(head)
+        cur=rev
+        while cur:
+            if cur.data<9:
+                cur.data+=1
+                return self.reverse(rev)
+            cur.data=0
+            cur=cur.next
+        temp=Node(1)
+        temp.next=self.reverse(rev)
+        return temp
