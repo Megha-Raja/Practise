@@ -1,0 +1,47 @@
+Given the head of two singly linked lists num1 and num2 representing two non-negative integers. The task is to return the head of the linked list representing the sum of these two numbers.
+For example, num1 represented by the linked list : 1 -> 9 -> 0, similarly num2 represented by the linked list: 2 -> 5. Sum of these two numbers is represented by 2 -> 1 -> 5.
+Note: There can be leading zeros in the input lists, but there should not be any leading zeros in the output list.
+
+''' Node for linked list:
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+'''
+class Solution:
+    def reverse(self,head):
+        prev,curr=None,head
+        while curr:
+            temp=curr.next
+            curr.next=prev
+            prev=curr
+            curr=temp
+        return prev
+    
+    def removeZero(self,head):
+        while head and head.data==0:
+            head=head.next
+        return head
+
+    def addTwoLists(self, num1, num2):
+        num1=self.removeZero(num1)
+        num2=self.removeZero(num2)
+        num1=self.reverse(num1)
+        num2=self.reverse(num2)
+        head=None
+        carry=0
+        while num1 or num2 or carry:
+            digit=carry
+            if num1:
+                digit+=num1.data
+                num1=num1.next
+            if num2:
+                digit+=num2.data
+                num2=num2.next
+            carry=digit//10
+            temp=Node(digit%10)
+            temp.next=head
+            head=temp
+        return head
