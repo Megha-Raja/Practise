@@ -1,0 +1,62 @@
+You are given two linked lists representing two large positive numbers. The linked lists represent these two numbers, subtract the smaller number from the larger one and return the head of the linked list representing the result.
+Please take a look at the examples to get a better understanding of the task.The linked list does not contain leading zeros, except for the number zero itself.
+
+class Solution:
+    def reverse(self,curr):
+        prev=None
+        while curr:
+            temp=curr.next
+            curr.next=prev
+            prev=curr
+            curr=temp
+        return prev
+        
+    def length(self,curr):
+        n=0
+        while curr:
+            n+=1
+            curr=curr.next
+        return n
+        
+    def subLinkedList(self, l1, l2):
+        while l1 and l1.data==0:
+            l1=l1.next
+        while l2 and l2.data==0:
+            l2=l2.next
+        if not l1 and not l2:
+            return Node(0)
+        n1=self.length(l1)
+        n2=self.length(l2)
+        if n2>n1:
+            l1,l2=l2,l1
+        elif n1==n2:
+            while l1.data==l2.data:
+                l1=l1.next
+                l2=l2.next
+                if not l1:
+                    return Node(0)
+            if l2.data>l1.data:
+                l1,l2=l2,l1
+        l1=self.reverse(l1)
+        l2=self.reverse(l2)
+        head=None
+        borrow=0
+        while l1:
+            sub=borrow
+            ans=0
+            if l2:
+                sub+=l2.data
+                l2=l2.next
+            if l1.data<sub:
+                borrow=1
+                ans=l1.data+10-sub
+            else:
+                ans=l1.data-sub
+                borrow=0
+            temp=Node(ans)
+            temp.next=head
+            head=temp
+            l1=l1.next
+        while head.next and head.data==0:
+            head=head.next
+        return head
