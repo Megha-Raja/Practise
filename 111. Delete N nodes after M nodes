@@ -1,0 +1,26 @@
+Given a linked list, delete n nodes after skipping m nodes of a linked list until the last of the linked list.
+
+'''
+class Node:
+    # Constructor to initialize the node object
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+'''
+class Solution:
+    def linkdelete(self, head, n, m):
+        curr = head
+        prev = None
+        M,N=m,n
+        while curr:
+            m,n=M,N
+            while m > 0 and curr:
+                m -= 1
+                prev = curr
+                curr = curr.next
+            # Delete n nodes
+            while n > 0 and curr:
+                prev.next = curr.next
+                curr = curr.next
+                n -= 1
+        return head
