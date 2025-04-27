@@ -1,0 +1,32 @@
+Given a singly linked list, remove all nodes that have a node with a greater value anywhere to their right in the list. Return the head of the modified linked list.
+
+'''
+class Node:
+    def __init__(self,x):
+        self.data=x
+        self.next=None
+
+'''
+class Solution:
+    def reverse(self,head):
+        cur=head
+        prev=None
+        while cur:
+            temp=cur.next
+            cur.next=prev
+            cur.prev=temp
+            prev=cur
+            cur=temp
+        return prev
+    def compute(self,head):
+        head=self.reverse(head)
+        cur,temp=head,head.next
+        max_val=cur.data
+        while cur and cur.next:
+            if cur.next.data<max_val:
+                cur.next=cur.next.next
+            else:
+                cur=cur.next
+                max_val=cur.data
+        head=self.reverse(head)
+        return head
