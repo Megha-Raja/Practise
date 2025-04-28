@@ -1,0 +1,25 @@
+Given a linked list, return an integer denoting the length of the longest palindrome list that exists in the given linked list.
+
+'''
+class node:
+    def __init__(self):
+        self.data = None
+        self.next = Non
+'''
+class Solution:
+    def maxPalindrome(self,head):
+        def count(h1,h2):
+            cnt=0
+            while h1 and h2 and h1.data==h2.data:
+                cnt+=1
+                h1=h1.next
+                h2=h2.next
+            return cnt
+        prev=node()
+        ans=0
+        while head:
+            ans=max(ans,2*count(prev.next,head.next)+1)
+            off,head=head,head.next
+            prev.next,off.next=off,prev.next
+            ans=max(ans,2*count(prev.next,head))
+        return ans
