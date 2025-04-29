@@ -1,0 +1,12 @@
+Given a doubly linked list. Your task is to reverse the doubly linked list and return its head.
+
+class Solution:
+    def reverseDLL(self, head):
+        cur,prev=head,None
+        while cur:
+            temp=cur.next
+            cur.next=prev
+            cur.prev=temp
+            prev=cur
+            cur=temp
+        return prev
