@@ -1,0 +1,43 @@
+Your task is to implement  2 stacks in one array efficiently. You need to implement 4 methods.
+twoStacks : Initialize the data structures and variables to be used to implement  2 stacks in one array.
+push1 : pushes element into the first stack.
+push2 : pushes element into the second stack.
+pop1 : pops an element from the first stack and returns the popped element. If the first stack is empty, it should return -1.
+pop2 : pops an element from the second stack and returns the popped element. If the second stack is empty, it should return -1.
+
+class TwoStacks:
+    def __init__(self):
+        self.stack1=[]
+        self.stack2=[]
+        self.s1=-1
+        self.s2=-1
+    # Function to push an integer into stack 1
+    def push1(self, x):
+        self.stack1.append(x)
+        self.s1+=1
+        pass
+    # Function to push an integer into stack 2
+    def push2(self, x):
+        self.stack2.append(x)
+        self.s2+=1
+        pass
+
+    # Function to remove an element from top of stack 1
+    def pop1(self):
+        if self.s1==-1:
+            return -1
+        else:
+            ele=self.stack1.pop()
+            self.s1-=1
+            return ele
+        pass
+
+    # Function to remove an element from top of stack 2
+    def pop2(self):
+        if self.s2==-1:
+            return -1
+        else:
+            ele=self.stack2.pop()
+            self.s2-=1
+            return ele
+        pass
