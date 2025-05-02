@@ -1,0 +1,25 @@
+Given a string s, composed of different combinations of '(' , ')', '{', '}', '[', ']', verify the validity of the arrangement.
+An input string is valid if:
+
+         1. Open brackets must be closed by the same type of brackets.
+         2. Open brackets must be closed in the correct order.
+
+lass Solution:
+    def isBalanced(self, s):
+        # code here
+        n = len(s)
+        stack = []
+        for i in range(n):
+            curr = s[i]
+            if curr == '(' or curr == '{' or curr == '[':
+                stack.append(curr)
+            else:
+                if not stack:
+                    return False
+                else:
+                    top = stack[-1]
+                    stack.pop()
+                    if (curr == ')' and top != '(') or (curr == '}' and top != '{') or (curr == ']' and top != '['):
+                        return False
+
+        return True if len(stack) == 0 else False
