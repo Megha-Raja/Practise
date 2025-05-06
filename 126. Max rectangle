@@ -1,0 +1,32 @@
+Given a binary matrix mat[][] of size n * m. Find the maximum area of a rectangle formed only of 1s in the given matrix.
+
+class Solution:
+    def getMaxArea(self,arr):
+        n = len(arr)
+        stk = []
+        res = 0
+        for i in range(n):
+            while stk and arr[stk[-1]] >= arr[i]:
+                tp = stk.pop()
+                width = i if not stk else i - stk[-1] - 1
+                res = max(res, arr[tp] * width)
+            stk.append(i)
+        while stk:
+            tp = stk.pop()
+            curr = arr[tp] * (n if not stk else n - stk[-1] - 1)
+            res = max(res, curr)
+        return res
+
+    def maxArea(self,mat):
+        n = len(mat)
+        m = len(mat[0])
+        arr = [0] * m
+        ans = 0
+        for i in range(n):
+            for j in range(m):
+                if mat[i][j] == 1:
+                    arr[j] += 1
+                else:
+                    arr[j] = 0
+            ans = max(ans, self.getMaxArea(arr))
+        return ans
