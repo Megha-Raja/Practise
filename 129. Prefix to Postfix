@@ -1,0 +1,39 @@
+Given an infix expression in the form of string s. Convert this infix expression to a postfix expression.
+
+Infix expression: The expression of the form a op b. When an operator is in between every pair of operands.
+Postfix expression: The expression of the form a b op. When an operator is followed for every pair of operands.
+Note: The order of precedence is: ^ greater than * equals to / greater than + equals to -. Ignore the right associativity of ^.
+
+class Solution:
+    def prec(self, c):
+        if c == '^':
+            return 3
+        elif c == '/' or c == '*':
+            return 2
+        elif c == '+' or c == '-':
+            return 1
+        else:
+            return -1
+    def InfixtoPostfix(self, s):
+        st = []  # Stack for operators
+        ans = []  # Result list for postfix expression
+        for c in s:
+            if c.isalnum():  # Check if the character is alphanumeric (operand)
+                ans.append(c)
+            elif c == '(':
+                st.append(c)
+            elif c == ')':
+                while st and st[-1] != '(':
+                    ans.append(st.pop())
+                if st and st[-1] == '(':
+                    st.pop()
+            else:
+                while st and self.prec(st[-1]) >= self.prec(c):
+                    ans.append(st.pop())
+                st.append(c)
+        
+        # Pop all the operators from the stack
+        while st:
+            ans.append(st.pop())
+        
+        return ''.join(ans)
