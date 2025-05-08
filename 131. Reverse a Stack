@@ -1,0 +1,19 @@
+You are given a stack St. You have to reverse the stack using recursion.
+
+from typing import List
+
+class Solution:
+    def test(self,St,ans):
+        if not St:
+            return 
+        temp=St.pop()
+        ans.append(temp)
+        self.test(St,ans)
+    
+    def reverse(self,St): 
+        ans=[]
+        self.test(St,ans)
+        St.clear()
+        for i in ans:
+            St.append(i)
+        return St
