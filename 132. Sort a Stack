@@ -1,0 +1,15 @@
+Given a stack, the task is to sort it such that the top of the stack has the greatest element.
+
+class Solution:
+    def Sortit(self, s, ele):
+        if not s or s[-1]<=ele:
+            s.append(ele)
+        else:
+            temp=s.pop()
+            self.Sortit(s,ele)
+            s.append(temp)
+    def Sorted(self,s):
+        if s:
+            temp=s.pop(0)
+            self.Sorted(s)
+            self.Sortit(s,temp)
