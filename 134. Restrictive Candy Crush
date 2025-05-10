@@ -1,0 +1,30 @@
+Given a string s and an integer k, the task is to reduce the string by applying the following operation:
+Choose a group of k consecutive identical characters and remove them.
+
+The operation can be performed any number of times until it is no longer possible.
+
+class Solution:
+    def Reduced_String(self, k, s):
+        stk = []
+        i = 0
+        while i < len(s):
+            ch = s[i]
+            i += 1
+            stk.append(ch)
+            count = 0
+            # Count the number of consecutive occurrences of current character
+            while len(stk) > 0 and stk[-1] == ch:
+                count += 1
+                stk.pop()
+            if count == k:
+                continue
+            else:
+                # Otherwise, push back the characters that were popped
+                while count > 0:
+                    stk.append(ch)
+                    count -= 1
+        result = ""
+        while len(stk) > 0:
+            result = stk.pop() + result
+        return result
+        
