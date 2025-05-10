@@ -1,0 +1,23 @@
+Given a string s consisting of only opening and closing curly brackets '{' and '}', find out the minimum number of reversals required to convert the string into a balanced expression. A reversal means changing '{' to '}' or vice-versa.
+
+def countRev (s):
+    st = []
+    ans = 0
+    for i in range(len(s)):
+        if (s[i] == '{'):
+            st.append(s[i])
+        # Step 2.2: If ' } ' is encountered
+        else:
+            if (len(st)>0):
+                st.pop()
+            # Step 2.2.2: If stack is empty, change '}' to# '{' and push it to stack and increment ans by # 1
+            else:
+                st.append('{')
+                ans += 1
+            
+    # Step 3: if stack size is odd return -1.
+    if (len(st) % 2 != 0):
+        return -1
+    # Step 4: Increment ans by ( stackSize/2 ).
+    ans += len(st) // 2
+    return ans
