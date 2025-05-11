@@ -1,0 +1,30 @@
+Implement a Queue using Linked List. 
+A Query Q is of 2 Types
+(i) 1 x   (a query of this type means  pushing 'x' into the queue)
+(ii) 2     (a query of this type means to pop an element from the queue and print the poped element)
+
+class Node:       
+    def __init__(self, data): 
+        self.data = data
+        self.next = None        
+class MyQueue:
+    def __init__(self):
+        self.rear=None
+        self.front=None    
+    def push(self, data): 
+        temp=Node(data)
+        if self.rear==None:
+            self.rear=temp
+            self.front=temp
+        else:
+            self.rear.next=temp
+            self.rear=temp
+    def pop(self):
+        if self.front==None:
+            return -1
+        else:
+            res=self.front.data
+            self.front=self.front.next
+            if self.front==None:
+                self.rear=None
+            return res
