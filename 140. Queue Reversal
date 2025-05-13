@@ -1,0 +1,11 @@
+Given a queue q containing integer elements, your task is to reverse the queue.
+
+class Solution:
+    #Function to reverse the queue.
+    def reverseQueue(self, q):
+        stk=[]
+        while not q.empty():
+            stk.append(q.get())
+        while stk:
+            q.put(stk.pop())
+        return q
