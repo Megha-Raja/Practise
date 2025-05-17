@@ -1,0 +1,16 @@
+Given an array, arr[] of rope lengths, connect all ropes into a single rope with the minimum total cost. The cost to connect two ropes is the sum of their lengths. 
+
+import heapq
+from typing import List
+class Solution:
+    #Function to return the minimum cost of connecting the ropes.
+    def minCost(self, arr: List[int]) -> int:
+        heapq.heapify(arr)
+        tc=0
+        while len(arr)>1:
+            first=heapq.heappop(arr)
+            sec=heapq.heappop(arr)
+            cost=first+sec
+            tc+=cost
+            heapq.heappush(arr,cost)
+        return tc
