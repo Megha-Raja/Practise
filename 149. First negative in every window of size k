@@ -1,0 +1,31 @@
+Given an array arr[]  and a positive integer k, find the first negative integer for each and every window(contiguous subarray) of size k.
+Note: If a window does not contain a negative integer, then return 0 for that window.
+
+from collections import deque
+class Solution:
+    def FirstNegativeInteger(self, arr, k):
+        n = len(arr)
+        Di = deque()
+        result = []  # Store results
+        for i in range(k):
+            if arr[i] < 0:
+                Di.append(i)
+
+        for i in range(k, n):
+            if not Di:
+                result.append(0)
+            else:
+                result.append(arr[Di[0]])
+
+            while Di and Di[0] <= (i - k):
+                Di.popleft()  # Remove from front of queue
+
+            if arr[i] < 0:
+                Di.append(i)
+
+        if not Di:
+            result.append(0)
+        else:
+            result.append(arr[Di[0]])
+
+        return result  
