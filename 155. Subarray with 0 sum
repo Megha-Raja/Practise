@@ -1,0 +1,13 @@
+Given an array of integers, arr[]. Find if there is a subarray (of size at least one) with 0 sum. Return true/false depending upon whether there is a subarray present with 0-sum or not. 
+
+class Solution: 
+    def subArrayExists(self,arr):
+        nsum = 0 
+        s=set()
+        n = len(arr)
+        for i in range(n):
+            nsum += arr[i]
+            if nsum==0 or nsum in s:
+                return True
+            s.add(nsum)
+        return False
