@@ -1,0 +1,20 @@
+Given a string str, your task is to find the length of the smallest window that contains all the characters of the given string at least once.
+
+from collections import Counter, defaultdict
+
+class Solution:
+    def findSubString(self, str):
+        n=len(str)
+        window_size=len(Counter(str))
+        freq_map=defaultdict(int)
+        left=0
+        min_size=n
+        for right in range(n):
+            freq_map[str[right]]+=1
+            while len(freq_map)==window_size:
+                min_size=min(min_size,right-left+1)
+                freq_map[str[left]]-=1
+                if freq_map[str[left]]<=0:
+                    del freq_map[str[left]]
+                left+=1
+        return min_size
