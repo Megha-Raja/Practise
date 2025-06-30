@@ -1,0 +1,25 @@
+Given two strings s1 and s2. Find the smallest window in the string s1 consisting of all the characters(including duplicates) of the string s2. Return "" in case no such window is present.
+If there are multiple such windows of the same length, return the one with the least starting index.
+
+class Solution:
+    def smallestWindow(self, s1: str, s2: str) -> str:
+        hm = [0] * 256
+        for char in s2:
+            hm[ord(char)] += 1
+        l, r, cnt, minLen, sIndex = 0, 0, 0, float('inf'), 0
+        while r < len(s1):
+            if hm[ord(s1[r])] > 0:
+                cnt += 1
+            hm[ord(s1[r])] -= 1
+            # Shrink the string until you find the smallest sub-array
+            while cnt == len(s2):
+                if r - l + 1 < minLen:
+                    minLen = r - l + 1
+                    sIndex = l
+                
+                hm[ord(s1[l])] += 1
+                if hm[ord(s1[l])] > 0:
+                    cnt -= 1
+                l += 1
+            r += 1
+        return "" if minLen == float('inf') else s1[sIndex:sIndex + minLen]
