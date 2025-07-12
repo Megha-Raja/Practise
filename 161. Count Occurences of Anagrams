@@ -1,0 +1,32 @@
+Given a word pat and a text txt. Return the count of the occurrences of anagrams of the word in the text.
+
+from collections import defaultdict
+class Solution:
+    
+    def search(self,pat, txt):
+        freq_map = defaultdict(int)
+        k = len(pat) # window size
+        pat_map = defaultdict(int)
+        result = 0
+        for c in pat:
+            pat_map[c] += 1
+        n = len(txt)
+        for i in range(k):
+            if txt[i] in pat_map:
+                freq_map[txt[i]] += 1
+                
+        if freq_map == pat_map:
+            result += 1
+
+        for i in range(k, n):
+            changed = False
+            if txt[i] in pat_map:
+                freq_map[txt[i]] += 1
+                changed = True
+            if txt[i - k] in pat_map:
+                freq_map[txt[i - k]] -= 1
+                changed = True
+
+            if changed and freq_map == pat_map:
+                result += 1
+        return result
